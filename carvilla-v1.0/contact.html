@@ -1,0 +1,541 @@
+<!doctype html>
+<html class="no-js" lang="fr">
+  <head>
+    <meta charset="utf-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <link
+      href="https://fonts.googleapis.com/css?family=Poppins:400,600,700"
+      rel="stylesheet"
+    />
+    <title>Contact — JEMER</title>
+    <link
+      rel="shortcut icon"
+      type="image/icon"
+      href="assets/logo/favicon.png"
+    />
+    <link rel="stylesheet" href="assets/css/font-awesome.min.css" />
+    <link rel="stylesheet" href="assets/css/linearicons.css" />
+    <link rel="stylesheet" href="assets/css/flaticon.css" />
+    <link rel="stylesheet" href="assets/css/animate.css" />
+    <link rel="stylesheet" href="assets/css/owl.carousel.min.css" />
+    <link rel="stylesheet" href="assets/css/owl.theme.default.min.css" />
+    <link rel="stylesheet" href="assets/css/bootstrap.min.css" />
+    <link rel="stylesheet" href="assets/css/bootsnav.css" />
+    <link rel="stylesheet" href="assets/css/style.css" />
+    <link rel="stylesheet" href="assets/css/responsive.css" />
+    <style>
+      /* Social links block styling */
+      .social-section {
+        margin-top: 20px;
+        text-align: center;
+      }
+      .social-section h3 {
+        margin-bottom: 6px;
+        color: #222;
+      }
+      .social-section .social-label {
+        color: #555;
+        margin-bottom: 10px;
+      }
+      .social-links {
+        display: flex;
+        gap: 12px;
+        justify-content: center;
+        align-items: center;
+        flex-wrap: wrap;
+      }
+      .social-links a {
+        width: 56px;
+        height: 56px;
+        display: inline-flex;
+        align-items: center;
+        justify-content: center;
+        border-radius: 10px;
+        background: #fff;
+        color: #2a3f8f;
+        border: 1px solid rgba(0, 0, 0, 0.06);
+        box-shadow: 0 6px 18px rgba(0, 0, 0, 0.06);
+        transition:
+          transform 0.12s ease,
+          background 0.12s ease,
+          color 0.12s ease;
+      }
+      .social-links a:hover {
+        transform: translateY(-6px);
+        background: #f2c94c;
+        color: #111;
+      }
+      .social-links i {
+        font-size: 20px;
+      }
+      .social-links svg.icon-tiktok {
+        width: 20px;
+        height: 20px;
+      }
+    </style>
+  </head>
+  <body class="has-fixed-navbar">
+    <!-- Header / Navigation (copied from index.html) -->
+    <nav
+      class="navbar navbar-default bootsnav navbar-sticky navbar-scrollspy"
+      data-minus-value-desktop="70"
+      data-minus-value-mobile="55"
+      data-speed="1000"
+    >
+      <div class="container">
+        <div class="navbar-header">
+          <button
+            type="button"
+            class="navbar-toggle"
+            data-toggle="collapse"
+            data-target="#navbar-menu"
+          >
+            <i class="fa fa-bars"></i>
+          </button>
+          <a class="navbar-brand" href="index.html">
+            <img
+              src="assets/logo/LOGO JEMER_Plan de travail 1 copie 7.png"
+              alt="JEMER"
+              style="
+                height: 48px;
+                display: inline-block;
+                margin-right: 8px;
+                vertical-align: middle;
+              "
+            />
+            JEMER<span> Jesus Merci</span>
+          </a>
+        </div>
+        <div class="collapse navbar-collapse menu-ui-design" id="navbar-menu">
+          <ul
+            class="nav navbar-nav navbar-right"
+            data-in="fadeInDown"
+            data-out="fadeOutUp"
+          >
+            <li><a href="index.html">Accueil</a></li>
+            <li class="dropdown">
+              <a href="#" class="dropdown-toggle" data-toggle="dropdown"
+                >Collections <span class="caret"></span
+              ></a>
+              <ul class="dropdown-menu">
+                <li><a href="divine-chic.html">Divine Chic</a></li>
+                <li><a href="elevation.html">Élévation</a></li>
+                <li><a href="grace-classe.html">Grâce & Classe</a></li>
+                <li><a href="prestige.html">Prestige</a></li>
+                <li><a href="heritage.html">Héritage</a></li>
+                <li><a href="signature-jemer.html">Signature JEMER</a></li>
+              </ul>
+            </li>
+            <li><a href="about.html">À propos</a></li>
+            <li><a href="contact.html">Contact</a></li>
+            <li class="nav-cart">
+              <a href="cart.html"
+                ><i class="fa fa-shopping-cart"></i>
+                <span id="cart-count">0</span></a
+              >
+            </li>
+          </ul>
+        </div>
+      </div>
+    </nav>
+
+    <main class="container" style="padding: 80px 0">
+      <div class="row">
+        <div class="col-md-6">
+          <h2>Contactez-nous</h2>
+          <p>
+            Une question, une commande spéciale ou besoin d'aide ? Envoyez-nous
+            un message.
+          </p>
+          <form id="contact-form">
+            <div class="form-group">
+              <label for="name">Nom</label>
+              <input
+                type="text"
+                id="name"
+                name="name"
+                class="form-control"
+                required
+              />
+            </div>
+            <div class="form-group">
+              <label for="email">E-mail</label>
+              <input
+                type="email"
+                id="email"
+                name="email"
+                class="form-control"
+                required
+              />
+            </div>
+            <div class="form-group">
+              <label for="subject">Objet</label>
+              <input
+                type="text"
+                id="subject"
+                name="subject"
+                class="form-control"
+              />
+            </div>
+            <div class="form-group">
+              <label for="message">Message</label>
+              <textarea
+                id="message"
+                name="message"
+                rows="6"
+                class="form-control"
+                required
+              ></textarea>
+            </div>
+            <button type="submit" class="welcome-btn">Envoyer</button>
+            <div id="contact-result" style="margin-top: 10px"></div>
+          </form>
+        </div>
+
+        <div class="col-md-6">
+          <h3>Notre localisation</h3>
+          <p>Venez nous rendre visite ou contactez-nous au +33 1 23 45 67 89</p>
+          <!-- Google Maps embed centered on Paris (modifiable) -->
+          <div style="width: 100%; height: 350px">
+            <iframe
+              width="100%"
+              height="100%"
+              frameborder="0"
+              style="border: 0"
+              src="https://www.google.com/maps?q=48.8566,2.3522&z=14&output=embed"
+              allowfullscreen
+            >
+            </iframe>
+          </div>
+          <p style="margin-top: 8px; color: #666; font-size: 14px">
+            Adresse: 10 Rue Exemple, 75001 Paris — modifiez selon votre
+            localisation
+          </p>
+
+          <div class="social-section">
+            <h3>Nos Réseaux Sociaux</h3>
+            <p class="social-label">
+              Suivez-nous pour les nouveautés et offres
+            </p>
+            <div class="social-links">
+              <a
+                href="https://www.facebook.com/share/1CD7tJ2kH9/?mibextid=wwXIfr"
+                target="_blank"
+                rel="noopener noreferrer"
+                aria-label="Facebook"
+                ><i class="fa fa-facebook"></i
+              ></a>
+              <a
+                href="https://www.instagram.com/jesus___merci?igsh=MTl1aWR3cmt3ZXhsdA=="
+                target="_blank"
+                rel="noopener noreferrer"
+                aria-label="Instagram"
+                ><i class="fa fa-instagram"></i
+              ></a>
+              <a
+                href="https://wa.me/2250718157654"
+                target="_blank"
+                rel="noopener noreferrer"
+                aria-label="WhatsApp"
+                ><i class="fa fa-whatsapp"></i
+              ></a>
+              <a
+                href="https://www.linkedin.com/in/jesus-merci-9063493aa?utm_source=share&utm_campaign=share_via&utm_content=profile&utm_medium=ios_app"
+                target="_blank"
+                rel="noopener noreferrer"
+                aria-label="LinkedIn"
+                ><i class="fa fa-linkedin"></i
+              ></a>
+              <a
+                href="https://www.tiktok.com/@jesus_merci?_r=1&_t=ZS-93s4s4UsTlE"
+                target="_blank"
+                rel="noopener noreferrer"
+                aria-label="TikTok"
+              >
+                <svg
+                  class="icon icon-tiktok"
+                  xmlns="http://www.w3.org/2000/svg"
+                  viewBox="0 0 512 512"
+                  aria-hidden="true"
+                  focusable="false"
+                >
+                  <circle
+                    cx="256"
+                    cy="256"
+                    r="200"
+                    fill="none"
+                    stroke="currentColor"
+                    stroke-width="40"
+                  ></circle>
+                  <path
+                    d="M336 160v144a48 48 0 1 1-96 0V224h-48"
+                    fill="none"
+                    stroke="currentColor"
+                    stroke-width="40"
+                    stroke-linecap="round"
+                    stroke-linejoin="round"
+                  ></path>
+                </svg>
+              </a>
+            </div>
+          </div>
+        </div>
+      </div>
+    </main>
+
+    <!-- Footer (copied from index.html) -->
+    <footer class="contact">
+      <div class="container">
+        <div class="footer-top">
+          <div class="row">
+            <div class="col-md-3 col-sm-6">
+              <div class="single-footer-widget">
+                <div class="footer-logo">
+                  <a href="index.html">
+                    <img
+                      src="assets/logo/LOGO JEMER_Plan de travail 1 copie 8.png"
+                      alt="JEMER"
+                      style="height: 48px"
+                    />
+                  </a>
+                </div>
+                <p>
+                  JEMER — vêtements inspirés par la foi et le style. Qualité,
+                  éthique et design.
+                </p>
+                <div class="footer-contact">
+                  <p>jesusmerci.jemer@gmail.com</p>
+                  <p>+225 07 18 15 76 54</p>
+                </div>
+              </div>
+            </div>
+            <div class="col-md-2 col-sm-6">
+              <div class="single-footer-widget">
+                <h2>À propos</h2>
+                <ul>
+                  <li><a href="about.html">À propos de JEMER</a></li>
+                  <li><a href="collections.html">Collection</a></li>
+                  <li><a href="condition-generales.html">Conditions</a></li>
+                  <li><a href="confidentialite.html">Confidentialité</a></li>
+                  <li><a href="cookies.html">Cookies</a></li>
+                </ul>
+              </div>
+            </div>
+            <div class="col-md-3 col-xs-12">
+              <div class="single-footer-widget">
+                <h2>Collections</h2>
+                <div class="row">
+                  <div class="col-md-7 col-xs-6">
+                    <ul>
+                      <li>
+                        <a href="divine-chic.html">Divine Chic</a>
+                      </li>
+                      <li>
+                        <a href="elevation.html">Élévation</a>
+                      </li>
+                      <li>
+                        <a href="grace-classe.html">Grâce & Classe</a>
+                      </li>
+                      <li><a href="prestige.html">Prestige</a></li>
+                      <li><a href="heritage.html">Héritage</a></li>
+                      <li>
+                        <a href="signature-jemer.html">Signature JEMER</a>
+                      </li>
+                    </ul>
+                  </div>
+                  <div class="col-md-5 col-xs-6">
+                    <ul>
+                      <li><a href="#">Accessoires</a></li>
+                      <li><a href="#">Lookbook</a></li>
+                    </ul>
+                  </div>
+                </div>
+              </div>
+            </div>
+            <div class="col-md-offset-1 col-md-3 col-sm-6">
+              <div class="single-footer-widget">
+                <h2>Newsletter</h2>
+                <div class="footer-newsletter">
+                  <p>
+                    Inscrivez-vous pour recevoir les dernières nouveautés et
+                    offres
+                  </p>
+                </div>
+                <div class="hm-foot-email">
+                  <div class="foot-email-box">
+                    <input
+                      id="newsletter-email"
+                      type="email"
+                      class="form-control"
+                      placeholder="Votre adresse e-mail"
+                    />
+                  </div>
+                  <div class="foot-email-subscribe">
+                    <button
+                      id="newsletter-submit"
+                      class="welcome-btn"
+                      type="button"
+                    >
+                      <i class="fa fa-arrow-right"></i>
+                    </button>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="footer-copyright">
+          <div class="row">
+            <div class="col-sm-6">
+              <p>&copy; 2026 JEMER. Tous droits réservés.</p>
+            </div>
+            <div class="col-sm-6">
+              <div class="footer-social">
+                <a
+                  href="https://www.facebook.com/share/1CD7tJ2kH9/?mibextid=wwXIfr"
+                  ><i class="fa fa-facebook"></i
+                ></a>
+                <a
+                  href="https://www.instagram.com/jesus___merci?igsh=MTl1aWR3cmt3ZXhsdA=="
+                  ><i class="fa fa-instagram"></i
+                ></a>
+                <a
+                  href="https://wa.me/2250718157654"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  ><i class="fa fa-whatsapp"></i
+                ></a>
+                <a
+                  href="https://www.linkedin.com/in/jesus-merci-9063493aa?utm_source=share&utm_campaign=share_via&utm_content=profile&utm_medium=ios_app"
+                  ><i class="fa fa-linkedin"></i
+                ></a>
+                <a
+                  href="https://www.tiktok.com/@jesus_merci?_r=1&_t=ZS-93s4s4UsTlE"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  aria-label="TikTok"
+                >
+                  <svg
+                    class="icon icon-tiktok"
+                    xmlns="http://www.w3.org/2000/svg"
+                    viewBox="0 0 512 512"
+                    aria-hidden="true"
+                    focusable="false"
+                  >
+                    <circle
+                      cx="256"
+                      cy="256"
+                      r="200"
+                      fill="none"
+                      stroke="currentColor"
+                      stroke-width="40"
+                    />
+                    <path
+                      d="M336 160v144a48 48 0 1 1-96 0V224h-48"
+                      fill="none"
+                      stroke="currentColor"
+                      stroke-width="40"
+                      stroke-linecap="round"
+                      stroke-linejoin="round"
+                    />
+                  </svg>
+                </a>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div id="scroll-Top">
+        <div class="return-to-top">
+          <i
+            class="fa fa-angle-up"
+            id="scroll-top"
+            data-toggle="tooltip"
+            data-placement="top"
+            title=""
+            data-original-title="Haut de page"
+            aria-hidden="true"
+          ></i>
+        </div>
+      </div>
+    </footer>
+
+    <!-- Scripts -->
+    <script src="assets/js/jquery.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/modernizr/2.8.3/modernizr.min.js"></script>
+    <script src="assets/js/bootstrap.min.js"></script>
+    <script src="assets/js/bootsnav.js"></script>
+    <script src="assets/js/owl.carousel.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery-easing/1.4.1/jquery.easing.min.js"></script>
+    <script src="assets/js/cart.js"></script>
+    <script src="assets/js/custom.js"></script>
+
+    <script>
+      // Submit contact form to backend API
+      (function () {
+        const form = document.getElementById("contact-form");
+        const result = document.getElementById("contact-result");
+
+        form.addEventListener("submit", async function (e) {
+          e.preventDefault();
+          result.innerHTML = "";
+          const submitBtn = form.querySelector('button[type="submit"]');
+          submitBtn.disabled = true;
+          const payload = {
+            name: form.name.value.trim(),
+            email: form.email.value.trim(),
+            subject: form.subject.value.trim(),
+            message: form.message.value.trim(),
+          };
+
+          try {
+            const resp = await fetch("http://localhost:3000/api/contact", {
+              method: "POST",
+              headers: { "Content-Type": "application/json" },
+              body: JSON.stringify(payload),
+            });
+
+            if (!resp.ok) {
+              const json = await resp.json().catch(() => ({}));
+              throw new Error((json && json.error) || "Erreur du serveur");
+            }
+
+            result.innerHTML =
+              '<div style="color:green">Merci, votre message a été envoyé. Nous vous répondrons bientôt.</div>';
+            form.reset();
+          } catch (err) {
+            result.innerHTML = `<div style="color:red">Erreur: ${err.message}</div>`;
+          } finally {
+            submitBtn.disabled = false;
+          }
+        });
+
+        // Newsletter footer submit
+        const newsletterInput = document.getElementById("newsletter-email");
+        const newsletterBtn = document.getElementById("newsletter-submit");
+        if (newsletterBtn && newsletterInput) {
+          newsletterBtn.addEventListener("click", async function () {
+            const email = (newsletterInput.value || "").trim();
+            if (!email) return alert("Entrez une adresse e-mail");
+            newsletterBtn.disabled = true;
+            try {
+              const resp = await fetch("http://localhost:3000/api/newsletter", {
+                method: "POST",
+                headers: { "Content-Type": "application/json" },
+                body: JSON.stringify({ email }),
+              });
+              if (!resp.ok) throw new Error("Impossible de s'inscrire");
+              alert("Merci — inscription confirmée.");
+              newsletterInput.value = "";
+            } catch (err) {
+              alert("Erreur: " + err.message);
+            } finally {
+              newsletterBtn.disabled = false;
+            }
+          });
+        }
+      })();
+    </script>
+  </body>
+</html>
