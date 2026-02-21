@@ -1,0 +1,911 @@
+<!doctype html>
+<html lang="fr">
+  <head>
+    <meta charset="utf-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Collections — JEMER</title>
+
+    <link
+      href="https://fonts.googleapis.com/css?family=Poppins:100,200,300,400,500,600,700,800,900"
+      rel="stylesheet"
+    />
+    <link
+      href="https://fonts.googleapis.com/css?family=Rufina:400,700"
+      rel="stylesheet"
+    />
+
+    <link rel="stylesheet" href="assets/css/font-awesome.min.css" />
+    <link rel="stylesheet" href="assets/css/linearicons.css" />
+    <link rel="stylesheet" href="assets/css/bootstrap.min.css" />
+    <link rel="stylesheet" href="assets/css/bootsnav.css" />
+    <link rel="stylesheet" href="assets/css/style.css" />
+    <link rel="stylesheet" href="assets/css/responsive.css" />
+    <link rel="stylesheet" href="assets/css/collections.css" />
+    <link rel="stylesheet" href="assets/css/animations.css" />
+
+    <style>
+      .icon-tiktok {
+        width: 20px;
+        height: 20px;
+        vertical-align: middle;
+      }
+      .collection-item {
+        margin-bottom: 30px;
+      }
+      /* Page background: gold -> blue gradient */
+      body {
+        background: linear-gradient(
+          135deg,
+          #ffd66b 0%,
+          #f2c94c 35%,
+          #2a3f8f 100%
+        );
+        background-attachment: fixed;
+        color: #111;
+      }
+      /* Quantity control visibility */
+      .qty-control .qty-minus,
+      .qty-control .qty-plus {
+        background: #f2f2f2;
+        border: 1px solid #ddd;
+        padding: 6px 10px;
+        border-radius: 4px;
+        cursor: pointer;
+        font-weight: 600;
+        color: #333;
+      }
+      .qty-control .qty-input {
+        vertical-align: middle;
+      }
+    </style>
+  </head>
+
+  <body class="has-fixed-navbar">
+    <header>
+      <nav
+        class="navbar navbar-default bootsnav navbar-sticky navbar-scrollspy"
+        data-minus-value-desktop="70"
+        data-minus-value-mobile="55"
+        data-speed="1000"
+      >
+        <div class="container">
+          <div class="navbar-header">
+            <button
+              type="button"
+              class="navbar-toggle"
+              data-toggle="collapse"
+              data-target="#navbar-menu"
+            >
+              <i class="fa fa-bars"></i>
+            </button>
+            <a class="navbar-brand" href="index.html">
+              <img
+                src="assets/logo/LOGO JEMER_Plan de travail 1 copie 7.png"
+                alt="JEMER"
+                style="
+                  height: 48px;
+                  display: inline-block;
+                  margin-right: 8px;
+                  vertical-align: middle;
+                "
+              />
+              JEMER<span> Jesus Merci</span>
+            </a>
+          </div>
+          <div class="collapse navbar-collapse menu-ui-design" id="navbar-menu">
+            <ul class="nav navbar-nav navbar-right">
+              <li><a href="index.html">Accueil</a></li>
+              <li class="active"><a href="collections.html">Collections</a></li>
+              <li><a href="about.html">À propos</a></li>
+              <li><a href="contact.html">Contact</a></li>
+              <li class="nav-cart">
+                <a href="cart.html"
+                  ><i class="fa fa-shopping-cart"></i>
+                  <span id="cart-count">0</span></a
+                >
+              </li>
+            </ul>
+          </div>
+        </div>
+      </nav>
+    </header>
+
+    <main class="container" style="padding: 60px 0">
+      <div class="section-header text-center">
+        <p>découvrez <span>les</span> collections</p>
+        <h2>Nos Collections</h2>
+      </div>
+
+      <div class="row" style="margin-bottom: 40px">
+        <!-- Collection cards -->
+        <div class="col-md-6 col-lg-4">
+          <div class="single-featured-cars collection-item">
+            <div class="featured-cars-img">
+              <div
+                class="collection-image-placeholder"
+                style="
+                  height: 200px;
+                  background: #f5f5f5;
+                  display: flex;
+                  align-items: center;
+                  justify-content: center;
+                  color: #999;
+                "
+              >
+                <img
+                  src="assets/images/featured-cars/collection-divine-chic-femme01.jpeg"
+                  alt="Divine Chic"
+                  style="
+                    width: 100%;
+                    height: 200px;
+                    object-fit: cover;
+                    display: block;
+                  "
+                />
+              </div>
+            </div>
+            <div class="featured-cars-txt">
+              <h3>Collection DIVINE CHIC</h3>
+              <p
+                class="collection-price"
+                style="font-weight: 600; margin-bottom: 6px"
+              >
+                25.000 FCFA
+              </p>
+              <p>
+                Tenues élégantes et raffinées Pour femmes qui imposent leur
+                style avec divine chic .
+              </p>
+              <p>
+                <button
+                  class="btn-add-to-cart welcome-btn"
+                  data-name="DIVINE CHIC Pack"
+                  data-price="89"
+                  data-img="assets/images/featured-cars/collection-divine-chic-femme01.jpeg"
+                  style="margin-top: 8px"
+                >
+                  Ajouter
+                </button>
+              </p>
+              <div class="product-actions">
+                <a class="welcome-btn" href="divine-chic.html"
+                  >Voir la collection</a
+                >
+                <div
+                  class="qty-control"
+                  style="
+                    display: inline-block;
+                    margin-left: 8px;
+                    vertical-align: middle;
+                  "
+                >
+                  <button class="qty-minus" type="button">-</button>
+                  <input
+                    type="number"
+                    class="qty-input"
+                    min="1"
+                    value="1"
+                    style="width: 56px; text-align: center; margin: 0 6px"
+                  />
+                  <button class="qty-plus" type="button">+</button>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <div class="col-md-6 col-lg-4">
+          <div class="single-featured-cars collection-item">
+            <div class="featured-cars-img">
+              <div
+                class="collection-image-placeholder"
+                style="
+                  height: 200px;
+                  background: #f5f5f5;
+                  display: flex;
+                  align-items: center;
+                  justify-content: center;
+                  color: #999;
+                "
+              >
+                <img
+                  src="assets/images/featured-cars/collection-grace & classe-femme01.jpeg"
+                  alt="Grace & Classe"
+                  style="
+                    width: 100%;
+                    height: 200px;
+                    object-fit: cover;
+                    display: block;
+                  "
+                />
+              </div>
+            </div>
+            <div class="featured-cars-txt">
+              <h3>Collection GRÂCE &amp; CLASSE</h3>
+              <p
+                class="collection-price"
+                style="font-weight: 600; margin-bottom: 6px"
+              >
+                25.000 FCFA
+              </p>
+              <p>
+                Uniformes harmonisés pour femmes qui recherchent élégance et
+                cohérence. Parfait pour équipes, familles et événements.
+              </p>
+
+              <p>
+                <button
+                  class="btn-add-to-cart welcome-btn"
+                  data-name="GRÂCE &amp; CLASSE Pack"
+                  data-price="79"
+                  data-img="assets/images/new-cars-model/tunique-homme01.jpeg"
+                  style="margin-top: 8px"
+                >
+                  Ajouter
+                </button>
+              </p>
+              <div class="product-actions">
+                <a class="welcome-btn" href="grace-classe.html"
+                  >Voir la collection</a
+                >
+                <div
+                  class="qty-control"
+                  style="
+                    display: inline-block;
+                    margin-left: 8px;
+                    vertical-align: middle;
+                  "
+                >
+                  <button class="qty-minus" type="button">-</button>
+                  <input
+                    type="number"
+                    class="qty-input"
+                    min="1"
+                    value="1"
+                    style="width: 56px; text-align: center; margin: 0 6px"
+                  />
+                  <button class="qty-plus" type="button">+</button>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <div class="col-md-6 col-lg-4">
+          <div class="single-featured-cars collection-item">
+            <div class="featured-cars-img">
+              <div
+                class="collection-image-placeholder"
+                style="
+                  height: 200px;
+                  background: #f5f5f5;
+                  display: flex;
+                  align-items: center;
+                  justify-content: center;
+                  color: #999;
+                "
+              >
+                <img
+                  src="assets/images/featured-cars/collection-elevation-homme02.jpeg"
+                  alt="Elevation JEMER"
+                  style="
+                    width: 100%;
+                    height: 200px;
+                    object-fit: cover;
+                    display: block;
+                  "
+                />
+              </div>
+            </div>
+            <div class="featured-cars-txt">
+              <h3>Collection ÉLÉVATION</h3>
+              <p
+                class="collection-price"
+                style="font-weight: 600; margin-bottom: 6px"
+              >
+                70.000 FCFA
+              </p>
+              <p>
+                Ténue pour hommes qui veulent élever leur niveau de style. Des
+                pièces sophistiquées pour les occasions spéciales et les moments
+                où l'on veut se démarquer.
+              </p>
+              <p>
+                <button
+                  class="btn-add-to-cart welcome-btn"
+                  data-name="ÉLÉVATION Pack"
+                  data-price="99"
+                  data-img="assets/images/featured-cars/collection-elevation-femme01.jpeg"
+                  style="margin-top: 8px"
+                >
+                  Ajouter
+                </button>
+              </p>
+              <div class="product-actions">
+                <a class="welcome-btn" href="elevation.html"
+                  >Voir la collection</a
+                >
+                <div
+                  class="qty-control"
+                  style="
+                    display: inline-block;
+                    margin-left: 8px;
+                    vertical-align: middle;
+                  "
+                >
+                  <button class="qty-minus" type="button">-</button>
+                  <input
+                    type="number"
+                    class="qty-input"
+                    min="1"
+                    value="1"
+                    style="width: 56px; text-align: center; margin: 0 6px"
+                  />
+                  <button class="qty-plus" type="button">+</button>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <div class="col-md-6 col-lg-4">
+          <div class="single-featured-cars collection-item">
+            <div class="featured-cars-img">
+              <div
+                class="collection-image-placeholder"
+                style="
+                  height: 200px;
+                  background: #f5f5f5;
+                  display: flex;
+                  align-items: center;
+                  justify-content: center;
+                  color: #999;
+                "
+              >
+                <img
+                  src="assets/images/featured-cars/collection-prestige-femme01.jpeg"
+                  alt="Prestige JEMER"
+                  style="
+                    width: 100%;
+                    height: 200px;
+                    object-fit: cover;
+                    display: block;
+                  "
+                />
+              </div>
+            </div>
+            <div class="featured-cars-txt">
+              <h3>Collection PRESTIGE</h3>
+              <p
+                class="collection-price"
+                style="font-weight: 600; margin-bottom: 6px"
+              >
+                35.000 FCFA
+              </p>
+              <p>
+                Uniformes institutionnels et professionnels pour femmes.
+                Autorité, structure, distinction.
+              </p>
+              <p>
+                <button
+                  class="btn-add-to-cart welcome-btn"
+                  data-name="PRESTIGE Pack"
+                  data-price="149"
+                  data-img="assets/images/featured-cars/collection-prestige-femme01.jpeg"
+                  style="margin-top: 8px"
+                >
+                  Ajouter
+                </button>
+              </p>
+              <div class="product-actions">
+                <a class="welcome-btn" href="prestige.html"
+                  >Voir la collection</a
+                >
+                <div
+                  class="qty-control"
+                  style="
+                    display: inline-block;
+                    margin-left: 8px;
+                    vertical-align: middle;
+                  "
+                >
+                  <button class="qty-minus" type="button">-</button>
+                  <input
+                    type="number"
+                    class="qty-input"
+                    min="1"
+                    value="1"
+                    style="width: 56px; text-align: center; margin: 0 6px"
+                  />
+                  <button class="qty-plus" type="button">+</button>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <div class="col-md-6 col-lg-4">
+          <div class="single-featured-cars collection-item">
+            <div class="featured-cars-img">
+              <div
+                class="collection-image-placeholder"
+                style="
+                  height: 200px;
+                  background: #f5f5f5;
+                  display: flex;
+                  align-items: center;
+                  justify-content: center;
+                  color: #999;
+                "
+              >
+                <img
+                  src="assets/images/featured-cars/collection-signature-homme03.jpeg"
+                  alt="Signature JEMER"
+                  style="
+                    width: 100%;
+                    height: 200px;
+                    object-fit: cover;
+                    display: block;
+                  "
+                />
+              </div>
+            </div>
+            <div class="featured-cars-txt">
+              <h3>Collection SIGNATURE JEMER</h3>
+              <p
+                class="collection-price"
+                style="font-weight: 600; margin-bottom: 6px"
+              >
+                120.000 FCFA
+              </p>
+              <p>
+                Modèles exclusifs et éditions limitées. La touche unique de la
+                maison.
+              </p>
+              <p>
+                <button
+                  class="btn-add-to-cart welcome-btn"
+                  data-name="SIGNATURE JEMER Pack"
+                  data-price="120.000"
+                  data-img="assets/images/featured-cars/collection-signature-femme01.jpeg"
+                  style="margin-top: 8px"
+                >
+                  Ajouter
+                </button>
+              </p>
+              <div class="product-actions">
+                <a class="welcome-btn" href="signature-jemer.html"
+                  >Voir la collection</a
+                >
+                <div
+                  class="qty-control"
+                  style="
+                    display: inline-block;
+                    margin-left: 8px;
+                    vertical-align: middle;
+                  "
+                >
+                  <button class="qty-minus" type="button">-</button>
+                  <input
+                    type="number"
+                    class="qty-input"
+                    min="1"
+                    value="1"
+                    style="width: 56px; text-align: center; margin: 0 6px"
+                  />
+                  <button class="qty-plus" type="button">+</button>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <div class="col-md-6 col-lg-4">
+          <div class="single-featured-cars collection-item">
+            <div class="featured-cars-img">
+              <div
+                class="collection-image-placeholder"
+                style="
+                  height: 200px;
+                  background: #f5f5f5;
+                  display: flex;
+                  align-items: center;
+                  justify-content: center;
+                  color: #999;
+                "
+              >
+                <img
+                  src="assets/images/featured-cars/collection-heritage-homme02.jpeg"
+                  alt="Heritage JEMER"
+                  style="
+                    width: 100%;
+                    height: 200px;
+                    object-fit: cover;
+                    display: block;
+                  "
+                />
+              </div>
+            </div>
+            <div class="featured-cars-txt">
+              <h3>Collection HÉRITAGE</h3>
+              <p
+                class="collection-price"
+                style="font-weight: 600; margin-bottom: 6px"
+              >
+                50.000 FCFA
+              </p>
+              <p>
+                Pour les créateurs et marques qui souhaitent produire leurs
+                propres collections avec JEMER.
+              </p>
+              <p>
+                <button
+                  class="btn-add-to-cart welcome-btn"
+                  data-name="HÉRITAGE Pack"
+                  data-price="199"
+                  data-img="assets/images/featured-cars/collection-signature-homme02.jpeg"
+                  style="margin-top: 8px"
+                >
+                  Ajouter
+                </button>
+              </p>
+              <div class="product-actions">
+                <a class="welcome-btn" href="heritage.html"
+                  >Voir la collection</a
+                >
+                <div
+                  class="qty-control"
+                  style="
+                    display: inline-block;
+                    margin-left: 8px;
+                    vertical-align: middle;
+                  "
+                >
+                  <button class="qty-minus" type="button">-</button>
+                  <input
+                    type="number"
+                    class="qty-input"
+                    min="1"
+                    value="1"
+                    style="width: 56px; text-align: center; margin: 0 6px"
+                  />
+                  <button class="qty-plus" type="button">+</button>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </main>
+
+    <!-- Image zoom modal -->
+    <div id="image-zoom-overlay" class="image-zoom-overlay" aria-hidden="true">
+      <button
+        class="image-zoom-close"
+        id="image-zoom-close"
+        aria-label="Fermer"
+      >
+        ✕
+      </button>
+      <div class="image-zoom-card" role="dialog" aria-modal="true">
+        <div class="image-zoom-media" style="position: relative">
+          <button
+            id="image-zoom-prev"
+            class="image-zoom-nav image-zoom-prev"
+            aria-label="Précédent"
+          >
+            ◀
+          </button>
+          <img id="image-zoom-img" src="" alt="" />
+          <button
+            id="image-zoom-next"
+            class="image-zoom-nav image-zoom-next"
+            aria-label="Suivant"
+          >
+            ▶
+          </button>
+        </div>
+        <div class="image-zoom-details">
+          <div
+            class="image-zoom-thumbs"
+            id="image-zoom-thumbs"
+            aria-hidden="true"
+            style="margin-top: 12px"
+          ></div>
+          <h3 id="image-zoom-title">Titre</h3>
+          <div
+            id="image-zoom-counter"
+            class="image-zoom-counter"
+            aria-hidden="true"
+            style="margin-top: 6px; color: #666; font-size: 14px"
+          ></div>
+          <p id="image-zoom-price" style="font-weight: 600">Prix</p>
+          <p id="image-zoom-desc">Description</p>
+          <div class="image-zoom-actions">
+            <button id="image-zoom-add" class="welcome-btn">
+              Ajouter au panier
+            </button>
+            <button
+              id="image-zoom-back"
+              class="welcome-btn"
+              style="margin-top: 8px; background: #ccc; color: #111"
+            >
+              Retour
+            </button>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <footer id="contact" class="contact">
+      <div class="container">
+        <div class="footer-top">
+          <div class="row">
+            <div class="col-md-3 col-sm-6">
+              <div class="single-footer-widget">
+                <div class="footer-logo">
+                  <a href="index.html">
+                    <img
+                      src="assets/logo/LOGO JEMER_Plan de travail 1 copie 8.png"
+                      alt="JEMER"
+                      style="height: 48px"
+                    />
+                  </a>
+                </div>
+                <p>
+                  JEMER — vêtements inspirés par la foi et le style. Qualité,
+                  éthique et design.
+                </p>
+                <div class="footer-contact">
+                  <p>jesusmerci.jemer@gmail.com</p>
+                  <p>+225 07 18 15 76 54</p>
+                </div>
+              </div>
+            </div>
+            <div class="col-md-2 col-sm-6">
+              <div class="single-footer-widget">
+                <h2>À propos</h2>
+                <ul>
+                  <li><a href="about.html">À propos de JEMER</a></li>
+                  <li class="dropdown">
+                    <a href="#" class="dropdown-toggle" data-toggle="dropdown"
+                      >Collections <span class="caret"></span
+                    ></a>
+                    <ul class="dropdown-menu">
+                      <li><a href="divine-chic.html">Divine Chic</a></li>
+                      <li><a href="elevation.html">Élévation</a></li>
+                      <li><a href="grace-classe.html">Grâce & Classe</a></li>
+                      <li><a href="prestige.html">Prestige</a></li>
+                      <li><a href="heritage.html">Héritage</a></li>
+                      <li>
+                        <a href="signature-jemer.html">Signature JEMER</a>
+                      </li>
+                    </ul>
+                  </li>
+                  <li><a href="condition-generales.html">Conditions</a></li>
+                  <li><a href="confidentialite.html">Confidentialité</a></li>
+                  <li><a href="cookies.html">Cookies</a></li>
+                </ul>
+              </div>
+            </div>
+            <div class="col-md-3 col-xs-12">
+              <div class="single-footer-widget">
+                <h2>Collections</h2>
+                <div class="row">
+                  <div class="col-md-7 col-xs-6">
+                    <ul>
+                      <li>
+                        <a href="divine-chic.html">Divine Chic</a>
+                      </li>
+                      <li>
+                        <a href="elevation.html">Élévation</a>
+                      </li>
+                      <li>
+                        <a href="grace-classe.html">Grâce & Classe</a>
+                      </li>
+                      <li><a href="prestige.html">Prestige</a></li>
+                      <li><a href="heritage.html">Héritage</a></li>
+                      <li>
+                        <a href="signature-jemer.html">Signature JEMER</a>
+                      </li>
+                    </ul>
+                  </div>
+                  <!-- <div class="col-md-5 col-xs-6">
+                    <ul>
+                      <li><a href="#">ferrari</a></li>
+                      <li><a href="#">porsche</a></li>
+                      <li><a href="#">land rover</a></li>
+                      <li><a href="#">aston martin</a></li>
+                      <li><a href="#">mersedes</a></li>
+                      <li><a href="#">opel</a></li>
+                    </ul>
+                  </div> -->
+                </div>
+              </div>
+            </div>
+            <div class="col-md-offset-1 col-md-3 col-sm-6">
+              <div class="single-footer-widget">
+                <h2>Newsletter</h2>
+                <div class="footer-newsletter">
+                  <p>
+                    Inscrivez-vous pour recevoir les dernières nouveautés et
+                    offres
+                  </p>
+                </div>
+                <div class="hm-foot-email">
+                  <div class="foot-email-box">
+                    <input
+                      id="newsletter-email"
+                      type="email"
+                      class="form-control"
+                      placeholder="Votre adresse e-mail"
+                    />
+                  </div>
+                  <!--/.foot-email-box-->
+                  <div class="foot-email-subscribe">
+                    <button
+                      id="newsletter-submit"
+                      class="welcome-btn"
+                      type="button"
+                    >
+                      <i class="fa fa-arrow-right"></i>
+                    </button>
+                  </div>
+                  <!--/.foot-email-icon-->
+                </div>
+                <!--/.hm-foot-email-->
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="footer-copyright">
+          <div class="row">
+            <div class="col-sm-6">
+              <p>&copy; 2026 JEMER. Tous droits réservés.</p>
+              <!--/p-->
+            </div>
+            <div class="col-sm-6">
+              <div class="footer-social">
+                <a
+                  href="https://www.facebook.com/share/1CD7tJ2kH9/?mibextid=wwXIfr"
+                  ><i class="fa fa-facebook"></i
+                ></a>
+                <a
+                  href="https://www.instagram.com/jesus___merci?igsh=MTl1aWR3cmt3ZXhsdA=="
+                  ><i class="fa fa-instagram"></i
+                ></a>
+                <a
+                  href="https://wa.me/2250718157654"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  ><i class="fa fa-whatsapp"></i
+                ></a>
+                <a href="#"><i class="fa fa-linkedin"></i></a>
+                <a
+                  href="https://www.tiktok.com/@jesus_merci?_r=1&_t=ZS-93s4s4UsTlE"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  aria-label="TikTok"
+                >
+                  <svg
+                    class="icon icon-tiktok"
+                    xmlns="http://www.w3.org/2000/svg"
+                    viewBox="0 0 512 512"
+                    aria-hidden="true"
+                    focusable="false"
+                  >
+                    <circle
+                      cx="256"
+                      cy="256"
+                      r="200"
+                      fill="none"
+                      stroke="currentColor"
+                      stroke-width="40"
+                    />
+                    <path
+                      d="M336 160v144a48 48 0 1 1-96 0V224h-48"
+                      fill="none"
+                      stroke="currentColor"
+                      stroke-width="40"
+                      stroke-linecap="round"
+                      stroke-linejoin="round"
+                    />
+                  </svg>
+                </a>
+              </div>
+            </div>
+          </div>
+        </div>
+        <!--/.footer-copyright-->
+      </div>
+      <!--/.container-->
+
+      <div id="scroll-Top">
+        <div class="return-to-top">
+          <i
+            class="fa fa-angle-up"
+            id="scroll-top"
+            data-toggle="tooltip"
+            data-placement="top"
+            title=""
+            data-original-title="Haut de page"
+            aria-hidden="true"
+          ></i>
+        </div>
+      </div>
+      <!--/.scroll-Top-->
+    </footer>
+    <!--/.contact-->
+    <!--contact end-->
+
+    <!-- Include all js compiled plugins (below), or include individual files as needed -->
+
+    <script src="assets/js/jquery.js"></script>
+
+    <!--modernizr.min.js-->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/modernizr/2.8.3/modernizr.min.js"></script>
+
+    <!--bootstrap.min.js-->
+    <script src="assets/js/bootstrap.min.js"></script>
+
+    <!-- bootsnav js -->
+    <script src="assets/js/bootsnav.js"></script>
+
+    <!--owl.carousel.js-->
+    <script src="assets/js/owl.carousel.min.js"></script>
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery-easing/1.4.1/jquery.easing.min.js"></script>
+
+    <!-- cart logic -->
+    <script src="assets/js/cart.js"></script>
+
+    <!-- site forms (newsletter) -->
+    <script src="assets/js/site-forms.js"></script>
+
+    <!--Custom JS-->
+    <script src="assets/js/custom.js"></script>
+    <script src="assets/js/animations.js"></script>
+    <script src="assets/js/zoom.js"></script>
+    <script>
+      // Ensure 'Voir la collection' opens product.html with the image from the card
+      (function () {
+        function getNearestImg($el) {
+          var $card = $el.closest(".single-featured-cars, .collection-item");
+          if (!$card || !$card.length) return null;
+          var img =
+            $el.data("img") || $card.find(".btn-add-to-cart").data("img");
+          if (img) return img;
+          var $imgTag = $card.find(".featured-cars-img img");
+          if ($imgTag.length) return $imgTag.attr("src");
+          // allow placeholder to carry data-img if set
+          var ph = $card.find(".collection-image-placeholder").data("img");
+          return ph || null;
+        }
+
+        $(document).on(
+          "click",
+          'a.welcome-btn[href*="product.html?collection="]',
+          function (e) {
+            var $a = $(this);
+            var href = $a.attr("href") || "product.html";
+            // if href already contains img param we keep it
+            try {
+              var parts = href.split("?");
+              var base = parts[0];
+              var params = new URLSearchParams(parts[1] || "");
+              if (!params.get("img")) {
+                var img = getNearestImg($a);
+                if (img) params.set("img", img);
+              }
+              e.preventDefault();
+              window.location = base + "?" + params.toString();
+            } catch (err) {
+              // fallback: navigate normally
+            }
+          },
+        );
+      })();
+    </script>
+  </body>
+</html>

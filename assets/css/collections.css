@@ -1,0 +1,328 @@
+/* Small visual improvements for collection pages */
+.collection-image-placeholder img {
+  border-radius: 6px;
+  box-shadow: 0 6px 18px rgba(0, 0, 0, 0.12);
+  transition:
+    transform 0.18s ease,
+    box-shadow 0.18s ease;
+}
+.collection-image-placeholder img:hover {
+  transform: translateY(-4px) scale(1.02);
+  box-shadow: 0 12px 28px rgba(0, 0, 0, 0.16);
+}
+.welcome-btn {
+  background: #2a3f8f;
+  color: #fff;
+  border: none;
+  padding: 8px 12px;
+  border-radius: 4px;
+}
+.welcome-btn:hover {
+  opacity: 0.95;
+}
+.qty-control .qty-minus,
+.qty-control .qty-plus {
+  background: #fff;
+  border: 1px solid #ddd;
+  padding: 6px 10px;
+  border-radius: 4px;
+}
+.product-actions {
+  margin-top: 10px;
+}
+
+/* Ensure details under each image are visible on large and small screens */
+.featured-cars-txt {
+  background: rgba(255, 255, 255, 0.95);
+  color: #111;
+  padding: 10px 12px;
+  border-radius: 6px;
+}
+.featured-cars-txt h3,
+.featured-cars-txt h4,
+.featured-cars-txt h5,
+.featured-cars-txt p,
+.collection-price {
+  color: inherit;
+  margin: 4px 0;
+}
+
+/* Stronger visibility rules for price text in featured blocks */
+.single-featured-cars .featured-cars-txt {
+  position: relative;
+  z-index: 20;
+}
+.single-featured-cars .featured-cars-txt h3,
+.single-featured-cars .featured-cars-txt h5,
+.single-featured-cars .featured-cars-txt .collection-price {
+  color: #0b1220 !important; /* very dark charcoal */
+  font-weight: 800 !important;
+  text-shadow: none !important;
+}
+
+/* On small screens use a darker translucent background so text remains readable over images */
+@media (max-width: 576px) {
+  .featured-cars-txt {
+    background: rgba(0, 0, 0, 0.6);
+    color: #fff;
+    padding: 10px;
+  }
+  .featured-cars-txt h3,
+  .featured-cars-txt h4,
+  .featured-cars-txt h5,
+  .featured-cars-txt p,
+  .collection-price {
+    color: inherit;
+  }
+}
+
+/* Ensure action buttons remain visible above images on small screens */
+@media (max-width: 576px) {
+  .collection-item,
+  .single-featured-cars {
+    overflow: visible;
+  }
+  .collection-image-placeholder,
+  .collection-image-placeholder img,
+  .featured-cars-img {
+    position: relative;
+    z-index: 0;
+  }
+  .featured-cars-txt,
+  .product-actions,
+  .product-actions .btn-add-to-cart,
+  .product-actions .qty-control {
+    position: relative;
+    z-index: 10;
+  }
+  /* Make add buttons full-width and clearly separated on very small screens */
+  .product-actions .btn-add-to-cart {
+    display: block;
+    width: 100%;
+    box-sizing: border-box;
+    margin-top: 8px;
+  }
+}
+
+/* Reduce image heights so action buttons are visible earlier */
+.collection-image-placeholder,
+.featured-cars-img {
+  height: 180px !important;
+  max-height: 180px !important;
+}
+.collection-image-placeholder img {
+  height: 180px !important;
+  max-height: 180px !important;
+  object-fit: cover !important;
+  display: block;
+}
+
+@media (max-width: 768px) {
+  .collection-image-placeholder,
+  .featured-cars-img {
+    height: 160px !important;
+    max-height: 160px !important;
+  }
+  .collection-image-placeholder img {
+    height: 160px !important;
+    max-height: 160px !important;
+  }
+}
+
+@media (max-width: 420px) {
+  .collection-image-placeholder,
+  .featured-cars-img {
+    height: 140px !important;
+    max-height: 140px !important;
+  }
+  .collection-image-placeholder img {
+    height: 140px !important;
+    max-height: 140px !important;
+  }
+}
+
+/* Image zoom modal styles */
+.image-zoom-overlay {
+  position: fixed;
+  inset: 0;
+  background: rgba(0, 0, 0, 0.75);
+  display: none;
+  align-items: center;
+  justify-content: center;
+  z-index: 100050;
+  padding: 24px;
+}
+.image-zoom-overlay.open {
+  display: flex;
+}
+.image-zoom-card {
+  background: #fff;
+  color: #111;
+  max-width: 980px;
+  width: 100%;
+  border-radius: 8px;
+  overflow: hidden;
+  box-shadow: 0 18px 48px rgba(0, 0, 0, 0.5);
+  display: grid;
+  grid-template-columns: 1fr 380px;
+  gap: 0;
+  max-height: calc(100vh - 80px);
+}
+.image-zoom-media {
+  background: #000;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  overflow: auto;
+}
+.image-zoom-media img {
+  max-width: 100%;
+  max-height: calc(100vh - 160px);
+  object-fit: contain;
+  display: block;
+}
+
+/* Zoom-in transition */
+.image-zoom-media img {
+  transform: scale(0.96);
+  opacity: 0;
+  transition:
+    transform 260ms cubic-bezier(0.2, 0.9, 0.2, 1),
+    opacity 220ms ease;
+}
+.image-zoom-overlay.open .image-zoom-media img {
+  transform: scale(1);
+  opacity: 1;
+}
+
+/* Prev/Next controls inside the media area */
+.image-zoom-nav {
+  position: absolute;
+  top: 50%;
+  transform: translateY(-50%);
+  background: rgba(255, 255, 255, 0.85);
+  border: none;
+  padding: 8px 10px;
+  border-radius: 6px;
+  cursor: pointer;
+  z-index: 100060;
+}
+.image-zoom-prev {
+  left: 18px;
+}
+.image-zoom-next {
+  right: 18px;
+}
+.image-zoom-nav:focus {
+  outline: 2px solid rgba(42, 63, 143, 0.9);
+}
+.image-zoom-counter {
+  font-size: 14px;
+  color: #666;
+  margin-top: 6px;
+}
+
+/* Mobile: move prev/next below image and enlarge tap targets */
+@media (max-width: 720px) {
+  .image-zoom-nav {
+    position: static;
+    transform: none;
+    top: auto;
+    left: auto;
+    right: auto;
+    margin: 8px 6px;
+    padding: 12px 14px;
+    display: inline-block;
+  }
+  .image-zoom-prev,
+  .image-zoom-next {
+    border-radius: 8px;
+  }
+  .image-zoom-media img {
+    max-height: calc(100vh - 260px);
+  }
+  .image-zoom-actions .welcome-btn {
+    font-size: 16px;
+    padding: 12px 14px;
+  }
+}
+.image-zoom-details {
+  padding: 18px;
+  overflow: auto;
+}
+.image-zoom-details h3 {
+  margin: 0 0 8px;
+}
+.image-zoom-details p {
+  margin: 6px 0 12px;
+  color: #444;
+}
+.image-zoom-close {
+  position: absolute;
+  right: 18px;
+  top: 18px;
+  background: rgba(255, 255, 255, 0.9);
+  border: none;
+  padding: 8px 10px;
+  border-radius: 6px;
+  cursor: pointer;
+  font-weight: 700;
+  z-index: 100060;
+}
+.image-zoom-actions {
+  margin-top: 12px;
+}
+.image-zoom-actions .welcome-btn {
+  width: 100%;
+}
+
+@media (max-width: 720px) {
+  .image-zoom-card {
+    grid-template-columns: 1fr;
+    max-width: 720px;
+  }
+  .image-zoom-details {
+    max-height: 240px;
+  }
+}
+
+/* Thumbnails (right column) for large screens */
+.image-zoom-thumbs {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+  max-height: calc(100vh - 160px);
+  overflow: auto;
+  padding-right: 6px;
+}
+.image-zoom-thumbs img {
+  width: 100%;
+  height: 64px;
+  object-fit: cover;
+  border-radius: 6px;
+  cursor: pointer;
+  border: 2px solid transparent;
+}
+.image-zoom-thumbs img.active {
+  border-color: #2a3f8f;
+}
+
+/* Hover effect: subtle scale and shadow for better affordance */
+.image-zoom-thumbs img {
+  transition:
+    transform 180ms ease,
+    box-shadow 180ms ease,
+    border-color 120ms ease;
+}
+.image-zoom-thumbs img:hover,
+.image-zoom-thumbs img:focus {
+  transform: scale(1.06);
+  box-shadow: 0 8px 20px rgba(0, 0, 0, 0.18);
+  border-color: rgba(42, 63, 143, 0.95);
+}
+
+@media (max-width: 720px) {
+  .image-zoom-thumbs {
+    display: none;
+  }
+}

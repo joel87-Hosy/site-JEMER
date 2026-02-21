@@ -1,0 +1,111 @@
+<!doctype html>
+<html lang="fr">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width,initial-scale=1" />
+    <title>Preview — Bandeau Cookies JEMER</title>
+    <link rel="stylesheet" href="assets/css/style.css" />
+    <style>
+      body {
+        font-family: Poppins, sans-serif;
+        padding: 40px;
+        background: #f7f8fb;
+      }
+      .preview-box {
+        max-width: 960px;
+        margin: 0 auto;
+        background: #fff;
+        padding: 28px;
+        border-radius: 8px;
+        box-shadow: 0 6px 20px rgba(0, 0, 0, 0.06);
+      }
+      h1 {
+        color: var(--brand-blue);
+      }
+      .note {
+        color: #666;
+        margin-top: 12px;
+      }
+      .actions {
+        margin-top: 18px;
+      }
+      .actions button {
+        margin-right: 10px;
+      }
+    </style>
+  </head>
+  <body>
+    <div class="preview-box">
+      <h1>Aperçu du bandeau cookies</h1>
+      <p class="note">
+        Le bandeau apparaît en bas de la page. Utilisez les boutons ci‑dessous
+        pour simuler l'affichage.
+      </p>
+      <div class="actions">
+        <button id="show-banner" class="welcome-btn">
+          Afficher le bandeau
+        </button>
+        <button id="clear-consent" class="welcome-btn">
+          Réinitialiser le consentement
+        </button>
+        <button id="accept-consent" class="welcome-btn">
+          Simuler &quot;Accepter&quot;
+        </button>
+        <button id="reject-consent" class="welcome-btn">
+          Simuler &quot;Refuser&quot;
+        </button>
+      </div>
+      <hr style="margin-top: 20px" />
+      <p>
+        Le style et le comportement sont ceux chargés depuis
+        <code>assets/css/style.css</code> et <code>assets/js/custom.js</code>.
+      </p>
+    </div>
+
+    <script>
+      document
+        .getElementById("show-banner")
+        .addEventListener("click", function () {
+          try {
+            localStorage.removeItem("jemer_cookie_consent");
+          } catch (e) {}
+          // reload to let the site's script show the banner
+          location.reload();
+        });
+      document
+        .getElementById("clear-consent")
+        .addEventListener("click", function () {
+          try {
+            localStorage.removeItem("jemer_cookie_consent");
+            alert(
+              "Consentement réinitialisé. Rechargez la page pour voir le bandeau.",
+            );
+          } catch (e) {
+            alert("Impossible d'accéder au localStorage");
+          }
+        });
+      document
+        .getElementById("accept-consent")
+        .addEventListener("click", function () {
+          try {
+            localStorage.setItem("jemer_cookie_consent", "accepted");
+            alert("Consentement = accepted");
+          } catch (e) {
+            alert("Impossible d'écrire dans le localStorage");
+          }
+        });
+      document
+        .getElementById("reject-consent")
+        .addEventListener("click", function () {
+          try {
+            localStorage.setItem("jemer_cookie_consent", "rejected");
+            alert("Consentement = rejected");
+          } catch (e) {
+            alert("Impossible d'écrire dans le localStorage");
+          }
+        });
+    </script>
+
+    <script src="assets/js/custom.js"></script>
+  </body>
+</html>
