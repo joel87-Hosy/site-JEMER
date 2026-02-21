@@ -800,6 +800,65 @@
         >
       </p>
     </main>
+    <!-- Image zoom modal -->
+    <div id="image-zoom-overlay" class="image-zoom-overlay" aria-hidden="true">
+      <button
+        class="image-zoom-close"
+        id="image-zoom-close"
+        aria-label="Fermer"
+      >
+        ✕
+      </button>
+      <div class="image-zoom-card" role="dialog" aria-modal="true">
+        <div class="image-zoom-media" style="position: relative">
+          <button
+            id="image-zoom-prev"
+            class="image-zoom-nav image-zoom-prev"
+            aria-label="Précédent"
+          >
+            ◀
+          </button>
+          <img id="image-zoom-img" src="" alt="" />
+          <button
+            id="image-zoom-next"
+            class="image-zoom-nav image-zoom-next"
+            aria-label="Suivant"
+          >
+            ▶
+          </button>
+        </div>
+        <div class="image-zoom-details">
+          <div
+            class="image-zoom-thumbs"
+            id="image-zoom-thumbs"
+            aria-hidden="true"
+            style="margin-top: 12px"
+          ></div>
+          <h3 id="image-zoom-title">Titre</h3>
+          <div
+            id="image-zoom-counter"
+            class="image-zoom-counter"
+            aria-hidden="true"
+            style="margin-top: 6px; color: #666; font-size: 14px"
+          ></div>
+          <p id="image-zoom-price" style="font-weight: 600">Prix</p>
+          <p id="image-zoom-desc">Description</p>
+          <div class="image-zoom-actions">
+            <button id="image-zoom-add" class="welcome-btn">
+              Ajouter au panier
+            </button>
+            <button
+              id="image-zoom-back"
+              class="welcome-btn"
+              style="margin-top: 8px; background: #ccc; color: #111"
+            >
+              Retour
+            </button>
+          </div>
+        </div>
+      </div>
+    </div>
+
     <script src="assets/js/jquery.js"></script>
     <script src="assets/js/bootstrap.min.js"></script>
     <script src="assets/js/bootsnav.js"></script>
@@ -807,6 +866,7 @@
     <script src="assets/js/cart.js"></script>
     <script src="assets/js/site-forms.js"></script>
     <script src="assets/js/custom.js"></script>
+    <script src="assets/js/zoom.js"></script>
     <script src="assets/js/animations.js"></script>
   </body>
 </html>
