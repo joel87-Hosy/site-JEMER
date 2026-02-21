@@ -1,0 +1,32 @@
+## Node modules
+/backend/node_modules/
+
+## Env / secrets
+/backend/.env
+/.env
+
+## SQL with secrets or local DB dumps
+/backend/setup_jemer.sql
+/backend/*.sql
+
+## Logs
+logs/
+*.log
+npm-debug.log*
+
+## Build / coverage
+dist/
+build/
+coverage/
+
+## Editor / OS files
+.DS_Store
+Thumbs.db
+.vscode/
+.idea/
+*.swp
+*.tmp
+
+## Optional: local test artifacts
+/backend/exec-sql.js
+/backend/post-contact.js
