@@ -2,6 +2,9 @@ const express = require("express");
 const bodyParser = require("body-parser");
 const cors = require("cors");
 const dotenv = require("dotenv");
+const helmet = require("helmet");
+const morgan = require("morgan");
+const rateLimit = require("express-rate-limit");
 dotenv.config();
 
 const contactRoute = require("./routes/contact");
@@ -9,8 +12,33 @@ const newsletterRoute = require("./routes/newsletter");
 const ordersRoute = require("./routes/orders");
 
 const app = express();
-app.use(cors());
-app.use(bodyParser.json({ limit: "1mb" }));
+
+// Security headers
+app.use(helmet());
+
+// Logging
+app.use(morgan(process.env.LOG_FORMAT || "combined"));
+
+// Basic rate limiting
+const limiter = rateLimit({
+  windowMs: 15 * 60 * 1000, // 15 minutes
+  max: Number(process.env.RATE_LIMIT_MAX) || 100,
+});
+app.use(limiter);
+
+// CORS: restrict by env var CORS_ORIGIN (comma-separated), fallback to localhost
+const defaultOrigins = ["http://localhost:3000", "http://127.0.0.1:3000"];
+const allowedOrigins = process.env.CORS_ORIGIN
+  ? process.env.CORS_ORIGIN.split(",").map((s) => s.trim())
+  : defaultOrigins;
+app.use(
+  cors({
+    origin: allowedOrigins,
+    optionsSuccessStatus: 200,
+  }),
+);
+
+app.use(bodyParser.json({ limit: process.env.BODY_LIMIT || "1mb" }));
 app.use(bodyParser.urlencoded({ extended: true }));
 
 app.use("/api/contact", contactRoute);

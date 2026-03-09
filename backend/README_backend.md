@@ -68,3 +68,37 @@ Notes:
 
 - Use a real SMTP provider and secure credentials. For development you can use Mailtrap or similar.
 - The code stores order items as JSON for simplicity; adapt if you want normalized tables.
+
+## Deployment checklist and recommendations
+
+- Ensure **no** `.env` files with secrets are committed. Use the provided `.env.example` and inject real secrets via your platform (Heroku config vars, Docker secrets, Kubernetes secrets, Azure app settings, etc.).
+- Rotate any credentials that were stored in removed `.env` files.
+- Set environment variables:
+  - `DB_HOST`, `DB_USER`, `DB_PASS`, `DB_NAME`
+  - `SMTP_HOST`, `SMTP_PORT`, `SMTP_USER`, `SMTP_PASS`
+  - `ADMIN_EMAIL` (optional)
+  - `CORS_ORIGIN` — comma-separated list of allowed origins (e.g. `https://yourdomain.com`)
+  - `RATE_LIMIT_MAX` — requests per `windowMs` (default 100)
+
+- Run behind TLS (reverse-proxy or platform-managed TLS). Do not expose the app directly on plain HTTP in production.
+- Use a non-root DB user with limited privileges and restrict DB access by IP/VPC.
+- Configure backups for the DB and an automated monitoring/alerting solution.
+
+Run with Docker (example):
+
+```bash
+cd backend
+docker build -t jemer-backend:latest .
+docker run -e DB_HOST=... -e DB_USER=... -e DB_PASS=... -e DB_NAME=... -p 3000:3000 jemer-backend:latest
+```
+
+Or use `pm2` for process management:
+
+```bash
+npm ci --only=production
+npm run start:pm2
+```
+
+Testing email without sending:
+
+set `SMTP_TEST=true` in env to suppress real email sending (useful in staging).

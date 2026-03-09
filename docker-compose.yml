@@ -1,0 +1,39 @@
+version: "3.8"
+
+services:
+  db:
+    image: mysql:8.0
+    restart: unless-stopped
+    environment:
+      MYSQL_ROOT_PASSWORD: change_me_root_password
+      MYSQL_DATABASE: jemer_db
+      MYSQL_USER: jemer_user
+      MYSQL_PASSWORD: change_me_password
+    volumes:
+      - db_data:/var/lib/mysql
+    healthcheck:
+      test: ["CMD", "mysqladmin", "ping", "-h", "localhost"]
+      interval: 10s
+      timeout: 5s
+      retries: 5
+
+  backend:
+    build: ./backend
+    restart: unless-stopped
+    ports:
+      - "3000:3000"
+    environment:
+      NODE_ENV: production
+      PORT: 3000
+      DB_HOST: db
+      DB_USER: jemer_user
+      DB_PASS: change_me_password
+      DB_NAME: jemer_db
+      SMTP_TEST: "true"
+      CORS_ORIGIN: "http://localhost:3000"
+    depends_on:
+      db:
+        condition: service_healthy
+
+volumes:
+  db_data:

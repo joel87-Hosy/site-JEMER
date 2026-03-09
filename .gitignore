@@ -4,6 +4,7 @@
 ## Env / secrets
 /backend/.env
 /.env
+**/backend/.env
 
 ## SQL with secrets or local DB dumps
 /backend/setup_jemer.sql
