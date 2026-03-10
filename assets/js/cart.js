@@ -67,7 +67,35 @@
   }
 
   function formatPrice(n) {
-    return Number(n).toFixed(0) + " FCFA";
+    // format integer with thousands separator as dot
+    var num = Number(n) || 0;
+    var s = Math.round(num).toString();
+    s = s.replace(/\B(?=(\d{3})+(?!\d))/g, ".");
+    return s + " FCFA";
+  }
+
+  function parsePrice(val) {
+    if (val == null) return 0;
+    if (typeof val === "number") return val;
+    var s = String(val).trim();
+    if (!s) return 0;
+    // If both dot and comma present, assume dot = thousand sep, comma = decimal
+    if (s.indexOf(".") !== -1 && s.indexOf(",") !== -1) {
+      s = s.replace(/\./g, "").replace(/,/g, ".");
+    } else {
+      // If only dot present and the last group has 3 digits, treat dots as thousand separators
+      if (s.indexOf(".") !== -1 && s.split(".").pop().length === 3) {
+        s = s.replace(/\./g, "");
+      }
+      // If only comma present, treat comma as decimal separator
+      if (s.indexOf(",") !== -1 && s.indexOf(".") === -1) {
+        s = s.replace(/,/g, ".");
+      }
+    }
+    // remove any non-digit/decimal/minus characters
+    s = s.replace(/[^0-9\.\-]/g, "");
+    var n = Number(s);
+    return isNaN(n) ? 0 : n;
   }
 
   // expose renderCart for cart.html
@@ -202,7 +230,7 @@
         name:
           $t.data("name") ||
           $t.closest(".single-featured-cars").find("h4").text(),
-        price: Number($t.data("price")) || 0,
+        price: parsePrice($t.data("price")) || 0,
         img:
           $t.data("img") ||
           $t
