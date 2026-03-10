@@ -1,4 +1,5 @@
 const express = require("express");
+const path = require("path");
 const bodyParser = require("body-parser");
 const cors = require("cors");
 const dotenv = require("dotenv");
@@ -40,6 +41,9 @@ app.use(
 
 app.use(bodyParser.json({ limit: process.env.BODY_LIMIT || "1mb" }));
 app.use(bodyParser.urlencoded({ extended: true }));
+
+// Serve static site files from project root (so pages like /heritage.html are available)
+app.use(express.static(path.join(__dirname, "..")));
 
 app.use("/api/contact", contactRoute);
 app.use("/api/newsletter", newsletterRoute);
