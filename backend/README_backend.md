@@ -102,3 +102,33 @@ npm run start:pm2
 Testing email without sending:
 
 set `SMTP_TEST=true` in env to suppress real email sending (useful in staging).
+
+## Deploy on Render (Web Service)
+
+Use Render for this Node/Express API with a MySQL database (external provider).
+
+Service settings:
+
+- Runtime: `Node`
+- Root Directory: `backend`
+- Build Command: `npm ci`
+- Start Command: `npm start`
+
+Environment variables to set in Render:
+
+- `NODE_ENV=production`
+- `PORT=10000` (Render injects `PORT`; you can leave this unset)
+- `LOG_FORMAT=combined`
+- `BODY_LIMIT=1mb`
+- `RATE_LIMIT_MAX=100`
+- `CORS_ORIGIN=https://your-frontend.onrender.com`
+- `DB_HOST`, `DB_USER`, `DB_PASS`, `DB_NAME`
+- `SMTP_HOST`, `SMTP_PORT`, `SMTP_USER`, `SMTP_PASS`
+- `ADMIN_EMAIL`
+- `SMTP_TEST=false`
+
+Notes:
+
+- The app already listens on `process.env.PORT`, so it is Render-compatible.
+- Make sure your DB provider allows connections from Render.
+- If your frontend is hosted on another domain, add it in `CORS_ORIGIN`.

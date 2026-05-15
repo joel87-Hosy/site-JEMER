@@ -12,13 +12,22 @@ const transporter = nodemailer.createTransport({
   },
 });
 
-async function sendMail({ to, subject, text, html }) {
-  const admin = process.env.ADMIN_EMAIL || "jesusmerci.jemer@gmail.com";
+function getAdminEmail() {
+  return process.env.ADMIN_EMAIL || "jesusmerci.jemer@gmail.com";
+}
+
+async function sendMail({ to, subject, text, html, replyTo }) {
+  const admin = getAdminEmail();
+  const fromAddress =
+    process.env.SMTP_FROM || process.env.SMTP_USER || "no-reply@jemer.local";
+  const toAddress = to || admin;
+
   // If SMTP_TEST is enabled, don't send real emails — just log and return a mock result
   if (process.env.SMTP_TEST === "true") {
     console.log("SMTP_TEST=true — email suppressed. Payload:", {
-      from: process.env.SMTP_USER,
-      to: to || admin,
+      from: fromAddress,
+      to: toAddress,
+      replyTo: replyTo || null,
       subject,
       text,
       html: (html || "").slice(0, 300),
@@ -27,8 +36,9 @@ async function sendMail({ to, subject, text, html }) {
   }
 
   const info = await transporter.sendMail({
-    from: process.env.SMTP_USER,
-    to: to || admin,
+    from: fromAddress,
+    to: toAddress,
+    replyTo,
     subject,
     text,
     html,
@@ -36,4 +46,4 @@ async function sendMail({ to, subject, text, html }) {
   return info;
 }
 
-module.exports = { sendMail };
+module.exports = { sendMail, getAdminEmail };

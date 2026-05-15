@@ -381,7 +381,7 @@
       }, 0);
       $("#submit-order").prop("disabled", true);
       try {
-        var resp = await fetch("http://localhost:3000/api/orders", {
+        var resp = await fetch("/api/orders", {
           method: "POST",
           headers: { "Content-Type": "application/json" },
           body: JSON.stringify({

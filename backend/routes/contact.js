@@ -1,7 +1,7 @@
 const express = require("express");
 const { body, validationResult } = require("express-validator");
 const pool = require("../db");
-const { sendMail } = require("../mailer");
+const { sendMail, getAdminEmail } = require("../mailer");
 
 const router = express.Router();
 
@@ -25,14 +25,21 @@ router.post(
         [name, email, subject || null, message],
       );
 
-      // send email to admin
       const html = `<p>Nouvelle demande de contact</p>
         <p><strong>Nom:</strong> ${name}</p>
         <p><strong>Email:</strong> ${email}</p>
         <p><strong>Sujet:</strong> ${subject || ""}</p>
         <p><strong>Message:</strong><br/>${message}</p>`;
 
-      await sendMail({ subject: `Contact - ${name}`, html });
+      const text = `Nouvelle demande de contact\n\nNom: ${name}\nEmail: ${email}\nSujet: ${subject || ""}\nMessage:\n${message}`;
+
+      await sendMail({
+        to: getAdminEmail(),
+        subject: `Contact - ${name}`,
+        html,
+        text,
+        replyTo: email,
+      });
 
       res.json({ ok: true });
     } catch (err) {
