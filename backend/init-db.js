@@ -4,11 +4,17 @@ dotenv.config();
 
 async function init() {
   const host = process.env.DB_HOST || "127.0.0.1";
+  const port = Number(process.env.DB_PORT) || 3306;
   const user = process.env.DB_USER || "root";
   const pass = process.env.DB_PASS || "";
   const dbName = process.env.DB_NAME || "jemer_db";
 
-  const conn = await mysql.createConnection({ host, user, password: pass });
+  const conn = await mysql.createConnection({
+    host,
+    port,
+    user,
+    password: pass,
+  });
   try {
     console.log("Creating database if not exists:", dbName);
     await conn.query(
