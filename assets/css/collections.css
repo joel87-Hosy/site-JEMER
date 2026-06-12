@@ -326,3 +326,305 @@
     display: none;
   }
 }
+
+/* ==========================================================
+   Modern collection and commerce refresh
+   ========================================================== */
+.collection-block .row,
+.featured-cars-content .row {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: stretch;
+}
+
+.collection-block [class*="col-"],
+.featured-cars-content [class*="col-"] {
+  display: flex;
+}
+
+.collection-block .single-featured-cars,
+.featured-cars-content .single-featured-cars,
+.collection-item {
+  display: flex;
+  width: 100%;
+  flex-direction: column;
+  overflow: hidden;
+  border: 1px solid rgba(17, 19, 24, 0.1);
+  border-radius: 8px;
+  background: #fff;
+  box-shadow: 0 10px 30px rgba(17, 19, 24, 0.08);
+}
+
+.collection-image-placeholder,
+.featured-cars-img {
+  position: relative;
+  overflow: hidden;
+  width: 100%;
+  height: auto !important;
+  max-height: none !important;
+  border-radius: 8px 8px 0 0;
+  background: #f2eee6;
+}
+
+.collection-image-placeholder::after,
+.featured-cars-img::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  pointer-events: none;
+  background: linear-gradient(180deg, transparent 60%, rgba(0, 0, 0, 0.14));
+  opacity: 0;
+  transition: opacity 180ms ease;
+}
+
+.single-featured-cars:hover .collection-image-placeholder::after,
+.single-featured-cars:hover .featured-cars-img::after {
+  opacity: 1;
+}
+
+.collection-image-placeholder img,
+.featured-cars-img img {
+  width: 100%;
+  height: auto !important;
+  max-height: none !important;
+  aspect-ratio: 4 / 5;
+  border-radius: 0;
+  object-fit: cover !important;
+  box-shadow: none;
+}
+
+.featured-cars-txt {
+  display: flex;
+  flex: 1;
+  flex-direction: column;
+  padding: 20px 18px 18px;
+  border-radius: 0;
+  background: #fff;
+}
+
+.featured-cars-txt h2 a,
+.featured-cars-txt h4 {
+  color: #111318 !important;
+  font-size: 18px;
+  font-weight: 900;
+  line-height: 1.28;
+  text-transform: none;
+}
+
+.featured-cars-txt p {
+  color: #687080;
+  font-size: 14px;
+}
+
+.collection-price,
+.featured-cars-txt h3,
+.featured-cars-txt h5,
+.image-zoom-price,
+#cart-total {
+  color: #9b6518 !important;
+  font-weight: 900 !important;
+}
+
+.collection-price,
+.featured-cars-txt h3,
+.featured-cars-txt h5 {
+  display: inline-flex;
+  align-items: center;
+  width: fit-content;
+  margin: 8px 0 12px;
+  padding: 6px 10px;
+  border-radius: 999px;
+  background: rgba(215, 154, 53, 0.12);
+  font-size: 14px;
+}
+
+.product-actions {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 10px;
+  align-items: center;
+  margin-top: auto;
+  padding-top: 16px;
+}
+
+.product-actions .welcome-btn,
+.product-actions .btn-add-to-cart {
+  flex: 1 1 150px;
+  height: 44px;
+  margin-top: 0;
+  padding: 0 14px;
+  white-space: normal;
+}
+
+.product-actions .qty-control {
+  flex: 0 0 auto;
+  padding: 4px;
+  border: 1px solid rgba(17, 19, 24, 0.1);
+  border-radius: 8px;
+  background: #fbfaf7;
+}
+
+.qty-control .qty-minus,
+.qty-control .qty-plus {
+  cursor: pointer;
+  transition:
+    background 180ms ease,
+    color 180ms ease,
+    border-color 180ms ease;
+}
+
+.qty-control .qty-minus:hover,
+.qty-control .qty-plus:hover {
+  border-color: rgba(215, 154, 53, 0.48);
+  background: #d79a35;
+  color: #15110a;
+}
+
+.qty-control .qty-input {
+  border-color: transparent;
+  background: transparent;
+}
+
+.btn-like {
+  display: inline-grid;
+  width: 44px;
+  height: 44px;
+  place-items: center;
+  border: 1px solid rgba(17, 19, 24, 0.1);
+  border-radius: 8px;
+  background: #fff;
+  color: #111318;
+}
+
+.btn-like:hover,
+.btn-like.active {
+  border-color: rgba(215, 154, 53, 0.5);
+  background: rgba(215, 154, 53, 0.12);
+  color: #9b6518;
+}
+
+.image-zoom-overlay {
+  background: rgba(10, 12, 18, 0.82);
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
+}
+
+.image-zoom-card {
+  overflow: hidden;
+  border: 1px solid rgba(255, 255, 255, 0.14);
+  border-radius: 8px;
+  background: #fff;
+  box-shadow: 0 24px 80px rgba(0, 0, 0, 0.45);
+}
+
+.image-zoom-media {
+  background: #111318;
+}
+
+.image-zoom-details {
+  padding: 24px;
+}
+
+.image-zoom-details h3 {
+  color: #111318;
+  font-size: 24px;
+  font-weight: 900;
+}
+
+.image-zoom-price {
+  display: inline-flex;
+  margin: 8px 0 14px;
+  padding: 7px 11px;
+  border-radius: 999px;
+  background: rgba(215, 154, 53, 0.12);
+}
+
+.image-zoom-close,
+.image-zoom-nav {
+  border: 1px solid rgba(17, 19, 24, 0.1);
+  border-radius: 8px;
+  background: rgba(255, 255, 255, 0.92);
+  color: #111318;
+}
+
+.image-zoom-close {
+  width: 40px;
+  height: 40px;
+  padding: 0;
+}
+
+.image-zoom-nav {
+  width: 42px;
+  height: 42px;
+  padding: 0;
+}
+
+.image-zoom-thumbs img {
+  border-radius: 8px;
+}
+
+#cart-items,
+.cart-summary,
+.cart-container,
+.order-form,
+.checkout-form,
+.contact-form,
+.contact-info,
+.about-card,
+.legal-content {
+  border: 1px solid rgba(17, 19, 24, 0.1);
+  border-radius: 8px;
+  background: #fff;
+  box-shadow: 0 10px 30px rgba(17, 19, 24, 0.08);
+}
+
+.contact-form,
+.order-form,
+.checkout-form {
+  padding: 28px;
+}
+
+.contact-form label,
+.order-form label,
+.checkout-form label {
+  color: #111318;
+  font-size: 13px;
+  font-weight: 900;
+  letter-spacing: 0.04em;
+  text-transform: uppercase;
+}
+
+.contact-form input,
+.contact-form textarea,
+.order-form input,
+.order-form textarea,
+.checkout-form input,
+.checkout-form textarea {
+  width: 100%;
+  margin-bottom: 14px;
+}
+
+@media (max-width: 767px) {
+  .collection-block [class*="col-"],
+  .featured-cars-content [class*="col-"] {
+    display: block;
+  }
+
+  .collection-block .single-featured-cars,
+  .featured-cars-content .single-featured-cars {
+    margin-bottom: 22px;
+  }
+
+  .product-actions {
+    display: grid;
+    grid-template-columns: 1fr;
+  }
+
+  .product-actions .qty-control {
+    justify-content: center;
+  }
+
+  .image-zoom-details {
+    padding: 18px;
+  }
+}
