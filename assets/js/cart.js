@@ -2,6 +2,22 @@
   "use strict";
   var CART_KEY = "jemer_cart";
   var LIKES_KEY = "jemer_likes";
+  var PRODUCTION_API_BASE_URL = "https://jemer-web.onrender.com";
+
+  function getApiBaseUrl() {
+    var configured = window.JEMER_API_BASE_URL || "";
+    if (configured) return configured.replace(/\/$/, "");
+
+    var host = window.location.hostname;
+    if (host === "localhost" || host === "127.0.0.1") {
+      return "http://localhost:3000";
+    }
+    return PRODUCTION_API_BASE_URL;
+  }
+
+  function apiUrl(path) {
+    return getApiBaseUrl() + path;
+  }
 
   function getCart() {
     try {
@@ -381,7 +397,7 @@
       }, 0);
       $("#submit-order").prop("disabled", true);
       try {
-        var resp = await fetch("/api/orders", {
+        var resp = await fetch(apiUrl("/api/orders"), {
           method: "POST",
           headers: { "Content-Type": "application/json" },
           body: JSON.stringify({

@@ -1,7 +1,26 @@
 // Simple site-wide form handlers: newsletter footer
 (function () {
+  const PRODUCTION_API_BASE_URL = "https://jemer-web.onrender.com";
+
+  function getApiBaseUrl() {
+    if (window.JEMER_API_BASE_URL) {
+      return window.JEMER_API_BASE_URL.replace(/\/$/, "");
+    }
+
+    const host = window.location.hostname;
+    if (host === "localhost" || host === "127.0.0.1") {
+      return "http://localhost:3000";
+    }
+
+    return PRODUCTION_API_BASE_URL;
+  }
+
+  function apiUrl(path) {
+    return getApiBaseUrl() + path;
+  }
+
   async function postNewsletter(email) {
-    const resp = await fetch("http://localhost:3000/api/newsletter", {
+    const resp = await fetch(apiUrl("/api/newsletter"), {
       method: "POST",
       headers: { "Content-Type": "application/json" },
       body: JSON.stringify({ email }),

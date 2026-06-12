@@ -27,8 +27,14 @@ const limiter = rateLimit({
 });
 app.use(limiter);
 
-// CORS: restrict by env var CORS_ORIGIN (comma-separated), fallback to localhost
-const defaultOrigins = ["http://localhost:3000", "http://127.0.0.1:3000"];
+// CORS: restrict by env var CORS_ORIGIN (comma-separated), fallback to known frontend origins
+const defaultOrigins = [
+  "https://joel87-hosy.github.io",
+  "http://localhost:8765",
+  "http://127.0.0.1:8765",
+  "http://localhost:3000",
+  "http://127.0.0.1:3000",
+];
 const allowedOrigins = process.env.CORS_ORIGIN
   ? process.env.CORS_ORIGIN.split(",").map((s) => s.trim())
   : defaultOrigins;
