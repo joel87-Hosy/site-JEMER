@@ -2522,7 +2522,9 @@ select:focus,
   }
 
   .welcome-hero {
-    min-height: auto;
+    min-height: 78vh;
+    background-position: center center !important;
+    background-size: cover;
   }
 
   .welcome-hero-txt {
@@ -2566,6 +2568,13 @@ select:focus,
 
   .qty-control {
     justify-content: center;
+  }
+}
+
+@media (max-width: 480px) {
+  .welcome-hero {
+    background-position: 62% center !important;
+    min-height: 82vh;
   }
 }
 
