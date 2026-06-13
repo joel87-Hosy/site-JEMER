@@ -29,6 +29,38 @@
   function saveCart(cart) {
     localStorage.setItem(CART_KEY, JSON.stringify(cart));
   }
+
+  function slugify(value) {
+    return (value || "")
+      .toString()
+      .toLowerCase()
+      .trim()
+      .replace(/\s+/g, "-")
+      .replace(/[^a-z0-9\-]/g, "");
+  }
+
+  function getProductCard($el) {
+    return $el.closest(".single-featured-cars, .collection-item");
+  }
+
+  function getProductId($button) {
+    var explicitId = $button.attr("data-id") || $button.data("id");
+    if (explicitId) return explicitId.toString();
+
+    var name = $button.attr("data-name") || $button.data("name") || "";
+    var img = $button.attr("data-img") || $button.data("img") || "";
+    var price = $button.attr("data-price") || $button.data("price") || "";
+    var fallback = slugify([name, price, img].join("-"));
+
+    if (!fallback) {
+      var $card = getProductCard($button);
+      fallback = "product-" + $(".btn-add-to-cart").index($button);
+      if ($card.length) fallback += "-" + $(".single-featured-cars").index($card);
+    }
+
+    $button.attr("data-id", fallback);
+    return fallback;
+  }
   function getLikes() {
     try {
       return JSON.parse(localStorage.getItem(LIKES_KEY)) || [];
@@ -63,6 +95,7 @@
     }
     saveCart(cart);
     updateCartCount();
+    return getCart();
   }
 
   function removeFromCart(id) {
@@ -169,6 +202,7 @@
       var $pa = $(this);
       var $add = $pa.find(".btn-add-to-cart");
       if ($add.length === 0) return;
+      $add.attr("type", "button");
 
       // ensure btn-like exists and has data-id
       if ($pa.find(".btn-like").length === 0) {
@@ -183,7 +217,7 @@
           .replace(/\s+/g, "-")
           .replace(/[^a-z0-9\-]/g, "");
         $pa.prepend(
-          '<button class="btn-like" data-id="' +
+          '<button class="btn-like" type="button" data-id="' +
             genId +
             '"><i class="fa fa-heart"></i></button>',
         );
@@ -231,38 +265,40 @@
     $(document).on("click", ".btn-add-to-cart", function (e) {
       e.preventDefault();
       var $t = $(this);
+      $t.attr("type", "button");
       var $pa = $t.closest(".product-actions");
+      var $card = getProductCard($t);
       var qty = 1;
       var $q = $pa.find(".qty-input");
       if ($q.length) qty = parseInt($q.val(), 10) || 1;
       var item = {
-        id:
-          $t.data("id") ||
-          ($t.data("name") || "")
-            .toString()
-            .toLowerCase()
-            .replace(/\s+/g, "-")
-            .replace(/[^a-z0-9\-]/g, ""),
-        name:
-          $t.data("name") ||
-          $t.closest(".single-featured-cars").find("h4").text(),
+        id: getProductId($t),
+        name: $t.data("name") || $card.find("h4").text() || "Article JEMER",
         price: parsePrice($t.data("price")) || 0,
         img:
           $t.data("img") ||
-          $t
-            .closest(".single-featured-cars")
-            .find(".featured-cars-img img")
+          $card
+            .find(".featured-cars-img img, .collection-image-placeholder img")
             .attr("src") ||
           "",
         quantity: qty,
       };
-      addToCart(item);
+      var updatedCart = addToCart(item);
+      if (!updatedCart || updatedCart.length === 0) {
+        alert(
+          "Le panier n'a pas pu être enregistré. Vérifiez que le stockage du navigateur est autorisé.",
+        );
+        return;
+      }
       // small feedback
       var original = $t.text();
       $t.text("Ajouté");
       setTimeout(function () {
         $t.text(original);
       }, 1200);
+      if ($("#cart-contents").length) {
+        window.renderCart();
+      }
     });
 
     // like
