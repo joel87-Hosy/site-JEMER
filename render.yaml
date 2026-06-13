@@ -18,6 +18,8 @@ services:
       # Set this to your Render app URL or custom domain.
       - key: CORS_ORIGIN
         value: https://joel87-hosy.github.io,http://localhost:8765,http://127.0.0.1:8765,http://localhost:3000,http://127.0.0.1:3000
+      - key: PUBLIC_SITE_URL
+        value: https://joel87-hosy.github.io/site-JEMER
       # Configure these in Render with your real database/SMTP values.
       - key: DB_HOST
         sync: false

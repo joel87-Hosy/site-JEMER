@@ -5,6 +5,30 @@ const { sendMail, getAdminEmail } = require("../mailer");
 
 const router = express.Router();
 
+const PUBLIC_SITE_URL =
+  (process.env.PUBLIC_SITE_URL || "https://joel87-hosy.github.io/site-JEMER")
+    .trim()
+    .replace(/\/$/, "");
+
+function escapeHtml(value) {
+  return String(value || "")
+    .replace(/&/g, "&amp;")
+    .replace(/</g, "&lt;")
+    .replace(/>/g, "&gt;")
+    .replace(/"/g, "&quot;")
+    .replace(/'/g, "&#39;");
+}
+
+function toPublicAssetUrl(src) {
+  if (!src) return "";
+  const value = String(src).trim();
+  if (!value) return "";
+  if (/^https?:\/\//i.test(value)) return value;
+
+  const cleanPath = value.replace(/^\.?\//, "");
+  return `${PUBLIC_SITE_URL}/${cleanPath}`;
+}
+
 router.post(
   "/",
   [
@@ -45,7 +69,14 @@ router.post(
         conn.release();
       }
 
-      const itemsHtml = items
+      const emailItems = items.map((item) => ({
+        name: String(item.name || ""),
+        qty: item.qty || item.quantity || 1,
+        price: item.price || 0,
+        img: toPublicAssetUrl(item.img),
+      }));
+
+      const itemsHtml = emailItems
         .map((i) => {
           const imgTag = i.img
             ? `<div><img src="${i.img}" style="max-width:120px;height:auto;display:block;margin-bottom:6px" alt="${i.name}"/></div>`
@@ -54,7 +85,7 @@ router.post(
         })
         .join("");
 
-      const itemsText = items
+      const itemsText = emailItems
         .map((i) => {
           const imgLine = i.img ? `Image: ${i.img}\n` : "";
           return `${imgLine}${i.name} — quantite: ${i.qty} — prix unitaire: ${i.price}`;
