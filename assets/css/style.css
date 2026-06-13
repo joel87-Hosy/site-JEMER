@@ -1872,9 +1872,12 @@ nav.navbar.bootsnav li.dropdown ul.dropdown-menu > li > a:hover {
   background:
     linear-gradient(90deg, rgba(10, 12, 18, 0.86) 0%, rgba(10, 12, 18, 0.54) 48%, rgba(10, 12, 18, 0.2) 100%),
     linear-gradient(180deg, rgba(10, 12, 18, 0.18), rgba(10, 12, 18, 0.7));
+  pointer-events: none;
 }
 
 .welcome-hero-txt {
+  position: relative;
+  z-index: 2;
   max-width: 850px;
   padding: 220px 0 260px;
   text-align: left;
@@ -2084,6 +2087,8 @@ a.welcome-btn,
 }
 
 .new-cars-txt {
+  position: relative;
+  z-index: 2;
   margin-top: 20px;
 }
 
