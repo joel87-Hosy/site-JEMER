@@ -44,9 +44,13 @@ router.post(
     }
 
     const { name, email, phone, address, items, total } = req.body;
+    let saved = false;
+    let emailed = false;
+    let orderId = null;
+    const failures = [];
+
     try {
       const conn = await pool.getConnection();
-      let orderId = null;
       try {
         await conn.beginTransaction();
         const [result] = await conn.execute(
@@ -62,48 +66,65 @@ router.post(
         );
         await conn.commit();
         orderId = result && result.insertId ? result.insertId : null;
+        saved = true;
       } catch (err) {
         await conn.rollback();
         throw err;
       } finally {
         conn.release();
       }
+    } catch (err) {
+      failures.push("database");
+      console.error("Order database error:", err);
+    }
 
-      const emailItems = items.map((item) => ({
-        name: String(item.name || ""),
-        qty: item.qty || item.quantity || 1,
-        price: item.price || 0,
-        img: toPublicAssetUrl(item.img),
-      }));
+    const emailItems = items.map((item) => ({
+      name: String(item.name || ""),
+      qty: item.qty || item.quantity || 1,
+      price: item.price || 0,
+      img: toPublicAssetUrl(item.img),
+    }));
 
-      const itemsHtml = emailItems
-        .map((i) => {
-          const imgTag = i.img
-            ? `<div><img src="${i.img}" style="max-width:120px;height:auto;display:block;margin-bottom:6px" alt="${i.name}"/></div>`
-            : "";
-          return `<li>${imgTag}<strong>${i.name}</strong> — quantite: ${i.qty} — prix unitaire: ${i.price}</li>`;
-        })
-        .join("");
+    const itemsHtml = emailItems
+      .map((item) => {
+        const safeName = escapeHtml(item.name);
+        const safeImg = escapeHtml(item.img);
+        const imgTag = item.img
+          ? `<div><img src="${safeImg}" style="max-width:120px;height:auto;display:block;margin-bottom:6px" alt="${safeName}"/></div>`
+          : "";
+        return `<li>${imgTag}<strong>${safeName}</strong> - quantite: ${escapeHtml(item.qty)} - prix unitaire: ${escapeHtml(item.price)}</li>`;
+      })
+      .join("");
 
-      const itemsText = emailItems
-        .map((i) => {
-          const imgLine = i.img ? `Image: ${i.img}\n` : "";
-          return `${imgLine}${i.name} — quantite: ${i.qty} — prix unitaire: ${i.price}`;
-        })
-        .join("\n\n");
+    const itemsText = emailItems
+      .map((item) => {
+        const imgLine = item.img ? `Image: ${item.img}\n` : "";
+        return `${imgLine}${item.name} - quantite: ${item.qty} - prix unitaire: ${item.price}`;
+      })
+      .join("\n\n");
 
-      const html = `<p>Nouvelle commande${orderId ? " — N°" + orderId : ""}</p>
-        <p><strong>Client:</strong> ${name}</p>
-        <p><strong>Email:</strong> ${email}</p>
-        <p><strong>Telephone:</strong> ${phone || "(non fourni)"}</p>
-        <p><strong>Adresse:</strong> ${address || "(non fourni)"}</p>
-        <p><strong>Total:</strong> ${total}</p>
-        <p><strong>Articles:</strong></p>
-        <ul>${itemsHtml}</ul>`;
+    const orderLabel = orderId ? ` - N ${orderId}` : "";
+    const html = `<p>Nouvelle commande${orderLabel}</p>
+      <p><strong>Client:</strong> ${escapeHtml(name)}</p>
+      <p><strong>Email:</strong> ${escapeHtml(email)}</p>
+      <p><strong>Telephone:</strong> ${escapeHtml(phone || "(non fourni)")}</p>
+      <p><strong>Adresse:</strong> ${escapeHtml(address || "(non fourni)")}</p>
+      <p><strong>Total:</strong> ${escapeHtml(total)}</p>
+      <p><strong>Articles:</strong></p>
+      <ul>${itemsHtml}</ul>`;
 
-      const text = `Nouvelle commande${orderId ? " — N°" + orderId : ""}\n
-Client: ${name}\nEmail: ${email}\nTelephone: ${phone || "(non fourni)"}\nAdresse: ${address || "(non fourni)"}\nTotal: ${total}\n\nArticles:\n${itemsText}`;
+    const text = `Nouvelle commande${orderLabel}
 
+Client: ${name}
+Email: ${email}
+Telephone: ${phone || "(non fourni)"}
+Adresse: ${address || "(non fourni)"}
+Total: ${total}
+
+Articles:
+${itemsText}`;
+
+    try {
       await sendMail({
         to: getAdminEmail(),
         subject: `Commande - ${name}${orderId ? " #" + orderId : ""}`,
@@ -111,12 +132,17 @@ Client: ${name}\nEmail: ${email}\nTelephone: ${phone || "(non fourni)"}\nAdresse
         text,
         replyTo: email,
       });
-
-      res.json({ ok: true });
+      emailed = true;
     } catch (err) {
-      console.error(err);
-      res.status(500).json({ error: "server_error" });
+      failures.push("email");
+      console.error("Order email error:", err);
     }
+
+    if (saved || emailed) {
+      return res.json({ ok: true, saved, emailed });
+    }
+
+    res.status(500).json({ error: "order_delivery_failed", failures });
   },
 );
 
