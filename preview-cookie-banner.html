@@ -62,7 +62,9 @@
       </p>
     </div>
 
-    <script>
+    <script src="assets/js/preview-cookie-banner.js"></script>
+
+    <template hidden id="legacy-preview-cookie-script">
       document
         .getElementById("show-banner")
         .addEventListener("click", function () {
@@ -104,7 +106,7 @@
             alert("Impossible d'écrire dans le localStorage");
           }
         });
-    </script>
+    </template>
 
     <script src="assets/js/custom.js"></script>
   </body>

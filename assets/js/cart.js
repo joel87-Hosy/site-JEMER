@@ -196,6 +196,9 @@
 
   $(document).ready(function () {
     updateCartCount();
+    if ($("#cart-contents").length) {
+      window.renderCart();
+    }
 
     // enhance product-actions: inject like button and quantity controls when missing
     $(".product-actions").each(function () {

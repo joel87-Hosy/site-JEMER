@@ -843,9 +843,6 @@
 
     <script src="assets/js/jquery.js"></script>
 
-    <!--modernizr.min.js-->
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/modernizr/2.8.3/modernizr.min.js"></script>
-
     <!--bootstrap.min.js-->
     <script src="assets/js/bootstrap.min.js"></script>
 
@@ -854,8 +851,6 @@
 
     <!--owl.carousel.js-->
     <script src="assets/js/owl.carousel.min.js"></script>
-
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery-easing/1.4.1/jquery.easing.min.js"></script>
 
     <!-- cart logic -->
     <script src="assets/js/cart.js"></script>
@@ -867,7 +862,7 @@
     <script src="assets/js/custom.js"></script>
     <script src="assets/js/animations.js"></script>
     <script src="assets/js/zoom.js"></script>
-    <script>
+    <template hidden id="legacy-collection-link-script">
       // Ensure 'Voir la collection' opens product.html with the image from the card
       (function () {
         function getNearestImg($el) {
@@ -906,6 +901,6 @@
           },
         );
       })();
-    </script>
+    </template>
   </body>
 </html>

@@ -15,7 +15,25 @@ const ordersRoute = require("./routes/orders");
 const app = express();
 
 // Security headers
-app.use(helmet());
+app.use(
+  helmet({
+    contentSecurityPolicy: {
+      directives: {
+        defaultSrc: ["'self'"],
+        baseUri: ["'self'"],
+        connectSrc: ["'self'", "https://jemer-web.onrender.com"],
+        fontSrc: ["'self'", "https://fonts.gstatic.com", "data:"],
+        frameSrc: ["'self'", "https://www.google.com"],
+        imgSrc: ["'self'", "data:", "https:"],
+        objectSrc: ["'none'"],
+        scriptSrc: ["'self'"],
+        scriptSrcAttr: ["'none'"],
+        styleSrc: ["'self'", "https://fonts.googleapis.com", "'unsafe-inline'"],
+        upgradeInsecureRequests: null,
+      },
+    },
+  }),
+);
 
 // Logging
 app.use(morgan(process.env.LOG_FORMAT || "combined"));

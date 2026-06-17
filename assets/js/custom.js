@@ -1,3 +1,7 @@
+document.documentElement.className = document.documentElement.className
+  .replace(/\bno-js\b/, "js")
+  .trim();
+
 $(document).ready(function () {
   "use strict";
 
@@ -265,6 +269,39 @@ $(document).ready(function () {
     // document already loaded — run immediately
     initConsentUI();
   }
+})();
+
+// Ensure collection links keep the nearest product image in the destination URL.
+(function () {
+  function getNearestImg($el) {
+    var $card = $el.closest(".single-featured-cars, .collection-item");
+    if (!$card || !$card.length) return null;
+    var img = $el.data("img") || $card.find(".btn-add-to-cart").data("img");
+    if (img) return img;
+    var $imgTag = $card.find(".featured-cars-img img");
+    if ($imgTag.length) return $imgTag.attr("src");
+    return $card.find(".collection-image-placeholder").data("img") || null;
+  }
+
+  $(document).on(
+    "click",
+    'a.welcome-btn[href*="product.html?collection="]',
+    function (e) {
+      var $a = $(this);
+      var href = $a.attr("href") || "product.html";
+      try {
+        var parts = href.split("?");
+        var base = parts[0];
+        var params = new URLSearchParams(parts[1] || "");
+        if (!params.get("img")) {
+          var img = getNearestImg($a);
+          if (img) params.set("img", img);
+        }
+        e.preventDefault();
+        window.location = base + "?" + params.toString();
+      } catch (err) {}
+    },
+  );
 })();
 
 // On small screens, neutralize any inline fixed/absolute positioning on action buttons
