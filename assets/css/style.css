@@ -2086,6 +2086,14 @@ a.welcome-btn,
   object-fit: cover;
 }
 
+.new-cars-img img.new-cars-img-contain {
+  height: clamp(320px, 38vw, 500px);
+  padding: 10px;
+  background: #f4f1ec;
+  object-fit: contain;
+  object-position: center;
+}
+
 .new-cars-txt {
   position: relative;
   z-index: 2;
